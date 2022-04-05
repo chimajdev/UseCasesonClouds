@@ -9,7 +9,7 @@
   - name: create resource groups
     azure_rm_resourcegroup:
       name: "{{ resourcegroup_name }}"
-      location: westeurope
+      location: eastus
       tags:
         testing: testing
 
