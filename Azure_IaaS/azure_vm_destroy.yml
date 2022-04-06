@@ -2,13 +2,18 @@
   hosts: localhost
 
   tasks: 
-  - name: destroy VM
-    azure_rm_virtualmachine:
+  - name: destroy resource group
+    azure_rm_resourcegroup:
+      name: "{{ resourcegroup_name }}"
+      location: eastus
+      tags:
+        testing: testing
+  
+  - name: destroy virtual network
+    azure_rm_virtualnetwork:
+      name: firstnetwork
       resource_group: "{{ resourcegroup_name }}"
-      name: "{{ vm_hostname }}-{{ item }}"
       state: absent
-    loop: "{{ range(0, 5)|list }}" 
-
 
   - name: destroy subnet
     azure_rm_subnet:
@@ -16,17 +21,12 @@
       virtual_network_name: firstnetwork
       resource_group: "{{ resourcegroup_name }}"
       state: absent
-  
-  - name: destroy virtual network
-    azure_rm_virtualnetwork:
-      name: firstnetwork
-      resource_group: "{{ resourcegroup_name }}"
-      state: absent
  
-  - name: destroy resource group
-    azure_rm_resourcegroup:
-      name: "{{ resourcegroup_name }}"
-      location: eastus
-      tags:
-        testing: testing
+   - name: destroy VM
+    azure_rm_virtualmachine:
+      resource_group: "{{ resourcegroup_name }}"
+      name: "{{ vm_hostname }}-{{ item }}"
+      state: absent
+    loop: "{{ range(0, 5)|list }}" 
+
 
