@@ -22,7 +22,7 @@
       resource_group: "{{ resourcegroup_name }}"
       state: absent
  
-   - name: destroy VM
+  - name: destroy VM
     azure_rm_virtualmachine:
       resource_group: "{{ resourcegroup_name }}"
       name: "{{ vm_hostname }}-{{ item }}"
