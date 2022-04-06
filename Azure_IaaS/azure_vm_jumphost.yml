@@ -39,7 +39,7 @@
     azure_rm_virtualmachine:
       resource_group: "{{ resourcegroup_name }}"
       name: jumphost
-      vm_size: Standard_A2
+      vm_size: Standard_DS1_v2
       admin_username: ansible
       ssh_password_enabled: false
       ssh_public_keys: 
@@ -48,12 +48,12 @@
       - path: /home/ansible/.ssh/authorized_keys
         key_data: "{{ automata_kvegh_sshkey }}"
       image:
-        publisher: RedHat
-        offer: rhel-byos
-        sku: rhel-lvm8
+        publisher: OpenLogic
+        offer: CentOS
+        sku: '7.5'
         version: latest
       plan:
-        product: rhel-byos
-        publisher: redhat
-        name: rhel-lvm8
+        product: OpenLogic
+        publisher: OpenLogic
+        name: OpenLogic
 
