@@ -48,9 +48,9 @@
       - path: /home/ansible/.ssh/authorized_keys
         key_data: "{{ automata_kvegh_sshkey }}"
       image:
-        publisher: Ubuntu
-        offer: UbuntuServer
-        sku: '20.04-LTS'
+        publisher: OpenLogic
+        offer: CentOS
+        sku: '7.5'
         version: latest
 #       plan:
 #         product: OpenLogic
