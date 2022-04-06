@@ -1,4 +1,4 @@
-- name: create Azure VM
+- name: destroy Azure VM
   hosts: localhost
 
   tasks: 
@@ -26,7 +26,7 @@
   - name: destroy resource group
     azure_rm_resourcegroup:
       name: "{{ resourcegroup_name }}"
-      location: westus
+      location: eastus
       tags:
         testing: testing
 
